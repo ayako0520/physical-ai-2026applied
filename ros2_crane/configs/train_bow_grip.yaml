@@ -1,0 +1,21 @@
+# ACT の学習設定（講座の configs/train_config.yaml を元に変更）
+dataset_root: "/home/ubuntu/dataset/lerobot_dataset/crane_bow_grip_trim"  # 前後の静止区間を除いたデータ
+repo_id: "crane_bow_grip"
+output_directory: "/home/ubuntu/work/checkpoints/crane_bow_grip_act_trim"
+config_path: "/home/ubuntu/work/configs/bow_grip_features.py"
+
+device: "cpu"
+training_steps: 3000      # 講座は 200（動作確認用）。学習を収束させるため増やす
+log_freq: 100
+num_workers: 2
+batch_size: 8             # 講座は 2
+chunk_size: 16
+n_action_steps: 1         # 学習には影響しない（評価時に 1/4/8/16 へ切り替える）
+learning_rate: 0.0001
+# 変更点：予測する16ステップを「現在から 0.05 秒刻み」（20Hz）にそろえる。
+# 講座の設定は -0.1〜1.4 秒（0.1 秒刻み）で、推論の 20Hz と時間間隔が合わないため、
+# 実行ステップ数を変える比較では時間のずれが結果に混ざってしまう。
+delta_timestamps:
+  observation.environment_state: [0.0]
+  observation.state: [0.0]
+  action: [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75]

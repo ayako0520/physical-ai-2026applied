@@ -5,5 +5,8 @@ selected_videos/
 *.mp4
 *.log
 
+# ロボットアーム実験の作業データ（データセット・学習済みモデル・録画）
+ros2_crane/docker/work/
+
 # Jupyter
 .ipynb_checkpoints/

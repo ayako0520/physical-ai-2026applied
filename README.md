@@ -7,9 +7,11 @@
 - モデル：[`lerobot/diffusion_pusht`](https://huggingface.co/lerobot/diffusion_pusht)（再学習なし、推論のみ）
 - ライブラリ：[LeRobot](https://github.com/huggingface/lerobot) 0.6.1、[gym-pusht](https://github.com/huggingface/gym-pusht)
 - 実行環境：Google Colab（T4 GPU、Python 3.13）
-- 動画：https://youtu.be/WgepSBy8igU
+- 動画：https://youtu.be/efQet9zMxho
 
-## 結果
+**発展実験**：同じ比較を、ROS 2 + Gazebo 上のロボットアーム CRANE+ V2 でも行いました（ACT を自分で学習）。詳細は [`ros2_crane/`](ros2_crane/README.md) を参照してください。PushT と違い、ロボットアームでは実行ステップ数を小さくしても成功率は下がらず、速さと計算量の差として現れました。
+
+## 結果（PushT）
 
 ### 本実験（各30エピソード、シード1000）
 
