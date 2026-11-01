@@ -1,0 +1,9 @@
+# Colabの実行結果（容量が大きく、再実行で再生成できるため）
+outputs/
+selected_videos/
+*.zip
+*.mp4
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
